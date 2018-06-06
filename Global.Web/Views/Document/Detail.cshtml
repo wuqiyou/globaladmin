@@ -1,0 +1,22 @@
+﻿@using Global.Web.Controllers
+@model Global.Web.Models.DocumentViewModel
+
+<h2>Document Detail: @Model.Instance.Title</h2>
+
+<div>
+    @Html.ActionLink("Edit", DocumentController.EditAction, new { id = Model.Instance.Id })
+</div>
+<div class="section">
+    <div>
+        <img style="border: solid; border-width:1px" src="@Html.FullImageUrl(@Model.Instance.ContentUri)" />
+    </div>
+    <p>
+        <strong>Image Url: </strong>@Model.Instance.ContentUri
+    </p>
+    <p>
+        <strong>Created Date: </strong>@string.Format(Global.Core.UIConst.DateTimeFormatString, Model.Instance.IssuedDate)
+    </p>
+    <p>
+        <strong>Title: </strong>@Model.Instance.Title
+    </p>
+</div>

@@ -1,0 +1,12 @@
+﻿@using Global.Web.Controllers
+@model Global.Web.Models.TemplateDetailViewModel
+
+<h2>Template Detail: @Model.Instance.Name</h2>
+<div id="actions">
+    @Html.ActionLink("Edit Basic", TemplateController.EditAction, new { id = Model.Instance.TemplateId })
+    @Html.ActionLink("Edit Category", TemplateController.EditCategoryAction, new { id = Model.Instance.TemplateId })
+    @Html.ActionLink("Edit Layout", TemplateController.EditLayoutAction, new { id = Model.Instance.TemplateId })
+</div>
+@Html.Partial("_TemplateProfile", Model.Instance)
+<p><strong>Categories: </strong>@Html.ComposeStringCategoryText(Model.Instance.Categorys)</p>
+@Html.Partial("_TemplateLayout", Model.Instance)

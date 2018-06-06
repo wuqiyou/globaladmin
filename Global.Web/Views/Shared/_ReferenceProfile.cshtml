@@ -1,0 +1,48 @@
+﻿@using Global.Data
+@using Global.Core
+@using Global.Web.Controllers
+@model Global.Web.Models.ReferenceViewModel
+<div class="section">
+    <table border="0">
+        <tr>
+            <td>
+                <strong>Folder: </strong>
+            </td>
+            <td>
+                @Model.Instance.Folder
+            </td>
+            <td>
+                <strong>Template: </strong>
+            </td>
+            <td>
+                @Html.ActionLink(@Model.Instance.Template.Name, TemplateController.DetailAction, TemplateController.ControllerName, new { id = Model.Instance.Template.TemplateId }, new { })
+            </td>
+            <td>
+                <strong>Enable Review: </strong>
+            </td>
+            <td>
+                @Model.Instance.EnableReview
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Hide Title: </strong>
+            </td>
+            <td>
+                @Model.Instance.HideTitle
+            </td>
+            <td>
+                <strong>Created Date: </strong>
+            </td>
+            <td>
+                @Model.Instance.CreatedDate.ToString(UIConst.DateTimeFormat)
+            </td>
+            <td>
+                <strong>Modified Date: </strong>
+            </td>
+            <td>
+                @Model.Instance.ModifiedDate.ToString(UIConst.DateTimeFormat)
+            </td>
+        </tr>
+    </table>
+</div>

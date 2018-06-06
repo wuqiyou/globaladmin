@@ -1,0 +1,21 @@
+﻿@using Global.Web.Common
+@model Global.Web.Models.HeaderViewModel
+
+<div id="logo">
+  <span><strong>Content Management</strong></span>
+  <a href="@WebContext.Current.SiteOption.Name">@WebContext.Current.SiteOption.Name</a>
+</div>
+<div id="login">
+  @Html.Partial("_UserSignIn")
+</div>
+<div style="clear: both;"></div>
+<nav id="nav">
+  <ul id="nav-mainList" class="bp-mediumToExtraLarge">
+    @foreach (var item in Model.MainMenus)
+    {
+      <li class="nav-mainItems">
+        <a href="@Html.LocalizeAdminHref(@item.NavigateUrl)">@item.MenuText</a>
+      </li>
+    }
+  </ul>
+</nav>

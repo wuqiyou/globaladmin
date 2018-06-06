@@ -1,0 +1,38 @@
+﻿@using SubjectEngine.Core
+@using Global.Data
+@using Global.Web.Common.Models
+@using Global.Web.Models
+@using Global.Web.Controllers
+@model ReferenceBlockViewModel
+
+<p><strong>Block(@Model.Block.BlockId): @Model.Block.Name</strong></p>
+<div class="rectangle">
+    @{
+        int index = 0;
+        foreach (var item in Model.Block.Subitems)
+        {
+        <div class="rectangle item">
+            <p><strong>@string.Format("{0}. {1}", ++index, @item.Label)</strong></p>
+            @if (item.DucType != DucTypes.Grid)
+            {
+                DucValueDto value = null;
+                if (Model.Reference.ValuesDic.ContainsKey(item.SubitemId))
+                {
+                    value = Model.Reference.ValuesDic[item.SubitemId];
+                }
+                Html.RenderPartial("_DucInfo", new DucViewModel { DucId = item.SubitemId, DucType = item.DucType, DucValue = value, CurrentLanguage = Model.CurrentLanguage });
+            }
+            else
+            {
+                if (item.Grid != null)
+                {
+                    string gridDataUrl = Url.Action(ReferenceController.GetGridDataAction, ReferenceController.ControllerName, new { referenceId = Model.Reference.ReferenceId });
+                    string rowEditUrl = Url.Action(ReferenceController.EditGridRowAction, ReferenceController.ControllerName, new { referenceId = Model.Reference.ReferenceId });
+                    GridAdminViewModel vm = new GridAdminViewModel(item.Grid, gridDataUrl, rowEditUrl);
+                    Html.RenderPartial("_GridAdmin", vm);
+                }
+            }
+        </div>
+        }
+    }
+</div>

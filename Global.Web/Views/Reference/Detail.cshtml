@@ -1,0 +1,29 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@model ReferenceViewModel
+
+<div id="actions">
+    @Html.ActionLink("Edit Basic", ReferenceController.EditAction, new { id = Model.Instance.ReferenceId })
+    @Html.ActionLink("Edit Content", ReferenceController.EditContentAction, new { id = Model.Instance.ReferenceId })
+    @if (Model.Instance.EnableCategory)
+    {
+        @Html.ActionLink("Edit Category", ReferenceController.EditCategoryAction, new { id = Model.Instance.ReferenceId })
+    }
+</div>
+@Html.Partial("_ReferenceProfile", Model)
+@Html.Partial("_ReferenceBasic", Model)
+<div class="rectangle">
+    @{
+        int index = 0;
+        foreach (var zone in Model.Instance.Template.Zones.OrderBy(o => o.Row))
+        {
+        <p>@string.Format("Zone {0}", ++index): @zone.Label (@zone.Style)</p>
+        <div class="rectangle">
+            @if (zone.Block != null)
+            {
+                Html.RenderPartial("_BlockInfo", new ReferenceBlockViewModel { Block = zone.Block, Reference = Model.Instance, CurrentLanguage = Model.CurrentLanguage });
+            }
+        </div>
+        }
+    }
+</div>

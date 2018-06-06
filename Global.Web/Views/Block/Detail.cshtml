@@ -1,0 +1,10 @@
+﻿@using Global.Web.Controllers
+@model Global.Web.Models.BlockDetailViewModel
+
+<h2>Block Detail: @Model.Instance.Name</h2>
+<div id="actions">
+    @Html.ActionLink("Edit Basic", BlockController.EditAction, new { id = Model.Instance.BlockId })
+    @Html.ActionLink("Edit Layout", BlockController.EditLayoutAction, new { id = Model.Instance.BlockId })
+</div>
+@Html.Partial("_BlockProfile", Model.Instance)
+@Html.Partial("_BlockLayout", Model.Instance)

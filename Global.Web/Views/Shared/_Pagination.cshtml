@@ -1,0 +1,46 @@
+﻿@using Global.Core
+@using Global.Web.Common.Models
+@model PaginationViewModel
+<div class="pagination @(Model.MaxPage <= 3 ? "pagination--mini" : "")">
+    <ul class="pagination-list">
+        <li class="pagination-listItem @(Model.CurrentPage == 1 ? "is-active" : "")">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="@Model.GetPageUrl(Model.PreviousPage, HttpContext.Current.Request.Url, UIConst.PAGE_QUERY_STRING)" class="pagination-link pagination-link--prev"><span class="icon-angle-left"></span>&nbsp; Prev</a>
+            }
+            else
+            {
+                <span class="pagination-link--current pagination-link--prev"><span class="icon-angle-left"></span>&nbsp; Prev</span>
+            }
+        </li>
+        @for (int i = Model.LowerBoundary; i <= Model.UpperBoundary; i++)
+        {
+            <li class="pagination-listItem @(i == Model.CurrentPage ? "is-active" : "")">
+                @if (i == Model.CurrentPage)
+                {
+                    <span class="pagination-link--current">@i</span>
+                }
+                else
+                {
+                    <a href="@Model.GetPageUrl(i, HttpContext.Current.Request.Url, UIConst.PAGE_QUERY_STRING)" class="pagination-link">@i</a>
+                }
+            </li>
+        }
+        <li class="pagination-listItem @(Model.CurrentPage == Model.MaxPage ? "is-active" : "")">
+            @if (Model.CurrentPage < Model.MaxPage)
+            {
+                <a href="@Model.GetPageUrl(Model.NextPage, HttpContext.Current.Request.Url, UIConst.PAGE_QUERY_STRING)" class="pagination-link pagination-link--next">Next &nbsp;<span class="icon-angle-right"></span></a>
+            }
+            else
+            {
+                <span class="pagination-link--current pagination-link--next">Next &nbsp;<span class="icon-angle-right"></span></span>
+            }
+        </li>
+        @if (Model.ShowTotal)
+        {
+            <li class="pagination-listItem">
+                <span>of @Model.MaxPage pages (@Model.TotalItems records) </span>
+            </li>
+        }
+    </ul>
+</div>

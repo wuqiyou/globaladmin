@@ -1,0 +1,17 @@
+﻿@using Global.Web.Controllers
+@using Global.Data
+@model Global.Web.Models.BlockEditViewModel
+
+<h2>Block Basic Edit: @Model.Instance.Name</h2>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", BlockController.DetailAction, new { id = Model.Instance.BlockId }, new { @class = "button" })
+    @Html.Partial("_BlockProfile", Model.Instance)
+    <p><strong>Basic</strong></p>
+    <div class="section">
+        <p><strong>Name: </strong>@Html.TextBox("Name", @Model.Instance.Name)</p>
+        <p><strong>Is BuiltIn: </strong>@Html.CheckBox("HideTitle", @Model.Instance.IsBuiltIn)</p>
+        <p><strong>Widget Name: </strong>@Html.TextBox("WidgetName", @Model.Instance.WidgetName)</p>
+    </div>
+}

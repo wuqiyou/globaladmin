@@ -1,0 +1,25 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@model ReferenceEditViewModel
+
+@using (Html.BeginForm(ReferenceController.EditContentAction, ReferenceController.ControllerName, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", ReferenceController.DetailAction, new { id = Model.Instance.ReferenceId }, new { @class = "button" })
+    @Html.Partial("_ReferenceProfile", Model)
+    <div class="rectangle">
+        @{
+    int index = 0;
+    foreach (var zone in Model.Instance.Template.Zones.OrderBy(o => o.Row))
+    {
+            <p>@string.Format("Zone {0}", ++index): @zone.Label (@zone.Style)</p>
+            <div class="rectangle">
+                @if (zone.Block != null)
+                {
+                    Html.RenderPartial("_BlockEdit", new ReferenceBlockViewModel { Block = zone.Block, Reference = Model.Instance, CurrentLanguage = Model.CurrentLanguage });
+                }
+            </div>
+    }
+        }
+    </div>
+}

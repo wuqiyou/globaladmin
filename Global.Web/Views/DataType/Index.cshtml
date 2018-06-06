@@ -1,0 +1,34 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@model DataTypeListViewModel
+
+<h2>Setting: DataType List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>DucType</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.Id
+                </td>
+                <td>
+                    @instance.Name
+                </td>
+                <td>
+                    @instance.DucType
+                </td>
+                <td>
+                    @instance.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

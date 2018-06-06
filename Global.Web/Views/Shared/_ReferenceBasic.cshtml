@@ -1,0 +1,45 @@
+﻿@using System.Text
+@using Global.Data
+@model Global.Web.Models.ReferenceViewModel
+
+<p><strong>Basic</strong></p>
+<div class="section">
+    <p>
+        <strong>Title: </strong>
+        @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+    </p>
+    @Model.Instance.Title
+    <p>
+        <strong>Slug: </strong>
+    </p>
+    @Model.Instance.Slug
+    <p>
+        <strong>Description: </strong>
+        @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+    </p>
+    @Model.Instance.Description
+    <p>
+        <strong>Keywords: </strong>
+        @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+    </p>
+    @Html.ComposeStringKeywordText(Model.Instance.ReferenceKeywords)
+    <p>
+        <strong>Enable Ad: </strong>
+        @Html.CheckBox("EnableAds", @Model.Instance.EnableAds, new { @disabled = "disabled" })
+    </p>
+    <p>
+        <strong>Enable Top Ad: </strong>
+        @Html.CheckBox("EnableTopAd", @Model.Instance.EnableTopAd, new { @disabled = "disabled" })
+    </p>
+    <p>
+        <strong>Categories: </strong>
+    </p>
+    @Html.ComposeStringCategoryText(Model.Instance.ReferenceCategorys)
+    @if (Model.Instance.EnableLocation)
+    {
+        <p>
+            <strong>Location: </strong>
+            @Model.Instance.LocationName
+        </p>
+    }
+</div>

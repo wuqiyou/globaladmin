@@ -1,0 +1,33 @@
+﻿@model Global.Web.Models.SignInViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Sign In";
+}
+<h3>Sign In</h3>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="editor-label">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+        </div>
+        <p>
+            <input type="submit" value="Sign In" />
+        </p>
+        @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+    </fieldset>
+}

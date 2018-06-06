@@ -1,0 +1,10 @@
+﻿@using Global.Web.Controllers
+@model Global.Web.Models.BlockEditViewModel
+
+<h2>Block Layout Edit: @Model.Instance.Name</h2>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", BlockController.DetailAction, new { id = Model.Instance.BlockId }, new { @class = "button" })
+    @Html.Partial("_BlockProfile", Model.Instance)
+}

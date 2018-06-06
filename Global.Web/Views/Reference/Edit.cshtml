@@ -1,0 +1,51 @@
+﻿@using Global.Web.Controllers
+@using Global.Data
+@model Global.Web.Models.ReferenceEditViewModel
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", ReferenceController.DetailAction, new { id = Model.Instance.ReferenceId }, new { @class = "button" })
+    @Html.Partial("_ReferenceProfile", Model)
+    <p><strong>Basic</strong></p>
+    <div class="section">
+        <p>
+            <strong>Title: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        @Html.TextBox("Title", @Model.Instance.Title)
+        <p>
+            <strong>Slug: </strong>
+        </p>
+        @Html.TextBox("Slug", @Model.Instance.Slug)
+        <p>
+            <strong>Description: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        <p>
+            @Html.TextArea("Description", @Model.Instance.Description, new { rows = 4, cols = 80 })
+        </p>
+        <p>
+            <strong>Keywords: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        <p>
+            @Html.TextArea("Keywords", @Model.Instance.Keywords, new { rows = 4, cols = 80 })
+        </p>
+        <p>
+            <strong>Enable Ad: </strong>
+            @Html.CheckBox("EnableAds", @Model.Instance.EnableAds)
+        </p>
+        <p>
+            <strong>Enable Top Ad: </strong>
+            @Html.CheckBox("EnableTopAd", @Model.Instance.EnableTopAd)
+        </p>
+        @if (Model.Instance.EnableLocation)
+        {
+            <p>
+                <strong>Location: </strong>
+                @Html.DropDownList("SelectedLocationId", new SelectList(Model.AvailableLocations, "Id", "Name", Model.Instance.LocationId), "Choose Location")
+            </p>
+        }
+    </div>
+}

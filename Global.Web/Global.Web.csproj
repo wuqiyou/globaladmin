@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF0C2032-D792-4C3A-9791-BF9E664D207E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Global.Web</RootNamespace>
+    <AssemblyName>Global.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Framework.Component, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d1f8213984e0de08, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\Framework.Component.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=d1f8213984e0de08, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Data, Version=0.0.0.0, Culture=neutral, PublicKeyToken=d1f8213984e0de08, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\Framework.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Security">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Unity">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.UoW, Version=0.0.0.0, Culture=neutral, PublicKeyToken=d1f8213984e0de08, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\Framework.UoW.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Validation, Version=0.0.0.0, Culture=neutral, PublicKeyToken=d1f8213984e0de08, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\Framework.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\betterslice\Library\Unity\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.ServiceLocatorAdapter">
+      <HintPath>..\..\betterslice\Library\Unity\Microsoft.Practices.Unity.ServiceLocatorAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\betterslice\Library\Packages\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Configuration">
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Core, Version=1.0.2.40959, Culture=neutral, PublicKeyToken=5637c19aac3788f8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Data, Version=1.0.2.31497, Culture=neutral, PublicKeyToken=5637c19aac3788f8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\betterslice\Library\Packages\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Trirand.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=e2819dc449af3295, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\betterslice\Library\Packages\Trirand.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\..\betterslice\Library\Packages\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\FolderTreeBuilder.cs" />
+    <Compile Include="Common\HtmlHelperExtension.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminBaseController.cs" />
+    <Compile Include="Controllers\BlockController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\DataTypeController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\FolderController.cs" />
+    <Compile Include="Controllers\HeaderController.cs" />
+    <Compile Include="Controllers\ReferenceController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\SubsiteController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Controllers\TransferController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\adminSite.css" />
+    <Content Include="Content\jquery-ui-1.9.2.custom.css" />
+    <Content Include="Content\pagination.css" />
+    <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\trirand\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\trirand\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\trirand\jquery.jqAutoComplete.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqChart.exporting.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqChart.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqComboBox.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqDatePicker.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqDropDownList.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqMultiSelect.min.js" />
+    <Content Include="Scripts\trirand\jquery.jqTreeView.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Global.Core\Global.Core.csproj">
+      <Project>{d54e2b37-bff5-4b16-9a06-f7628c6752c0}</Project>
+      <Name>Global.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.DataConverter\Global.DataConverter.csproj">
+      <Project>{b7668496-cef8-433e-90d5-51ec7222a5ec}</Project>
+      <Name>Global.DataConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Data\Global.Data.csproj">
+      <Project>{f7a518d6-1d67-4144-ba76-0cfbe6f668f1}</Project>
+      <Name>Global.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Registry\Global.Registry.csproj">
+      <Project>{5f9f3907-bcb1-42f6-8d6c-8ce81abf5a73}</Project>
+      <Name>Global.Registry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Service.Contract\Global.Service.Contract.csproj">
+      <Project>{f093d128-81eb-4b9f-bb62-811244ff922e}</Project>
+      <Name>Global.Service.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Web.Common\Global.Web.Common.csproj">
+      <Project>{6ef8b5c6-e349-4bec-a37f-00830adbcd1a}</Project>
+      <Name>Global.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Web.Models\Global.Web.Models.csproj">
+      <Project>{d603041d-cd06-4309-ba82-9a5343071bfc}</Project>
+      <Name>Global.Web.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Block\Detail.cshtml" />
+    <Content Include="Views\Block\Edit.cshtml" />
+    <Content Include="Views\Block\EditLayout.cshtml" />
+    <Content Include="Views\Block\Index.cshtml" />
+    <Content Include="Views\Collection\Create.cshtml" />
+    <Content Include="Views\Collection\Detail.cshtml" />
+    <Content Include="Views\Collection\Edit.cshtml" />
+    <Content Include="Views\Collection\Index.cshtml" />
+    <Content Include="Views\DataType\Index.cshtml" />
+    <Content Include="Views\Document\Create.cshtml" />
+    <Content Include="Views\Document\Detail.cshtml" />
+    <Content Include="Views\Document\DocumentList.cshtml" />
+    <Content Include="Views\Document\Edit.cshtml" />
+    <Content Include="Views\Document\Explorer.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Folder\Detail.cshtml" />
+    <Content Include="Views\Folder\Edit.cshtml" />
+    <Content Include="Views\Folder\Explorer.cshtml" />
+    <Content Include="Views\Folder\Index.cshtml" />
+    <Content Include="Views\Header\Index.cshtml" />
+    <Content Include="Views\Reference\Create.cshtml" />
+    <Content Include="Views\Reference\Detail.cshtml" />
+    <Content Include="Views\Reference\Edit.cshtml" />
+    <Content Include="Views\Reference\EditCategory.cshtml" />
+    <Content Include="Views\Reference\EditContent.cshtml" />
+    <Content Include="Views\Setting\AliasList.cshtml" />
+    <Content Include="Views\Setting\AppOptions.cshtml" />
+    <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Setting\Menus.cshtml" />
+    <Content Include="Views\Shared\InstanceDetail.cshtml" />
+    <Content Include="Views\Shared\InstanceEdit.cshtml" />
+    <Content Include="Views\Shared\InstanceList.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_BlockEdit.cshtml" />
+    <Content Include="Views\Shared\_BlockInfo.cshtml" />
+    <Content Include="Views\Shared\_BlockLayout.cshtml" />
+    <Content Include="Views\Shared\_BlockProfile.cshtml" />
+    <Content Include="Views\Shared\_DucEdit.cshtml" />
+    <Content Include="Views\Shared\_DucInfo.cshtml" />
+    <Content Include="Views\Shared\_FolderInfoProfile.cshtml" />
+    <Content Include="Views\Shared\_FolderTree.cshtml" />
+    <Content Include="Views\Shared\_GridAdmin.cshtml" />
+    <Content Include="Views\Shared\_GridDetail.cshtml" />
+    <Content Include="Views\Shared\_LanguageLabel.cshtml" />
+    <Content Include="Views\Shared\_ReferenceBasic.cshtml" />
+    <Content Include="Views\Shared\_ReferenceProfile.cshtml" />
+    <Content Include="Views\Shared\_TemplateLayout.cshtml" />
+    <Content Include="Views\Shared\_TemplateProfile.cshtml" />
+    <Content Include="Views\Shared\_UserSignIn.cshtml" />
+    <Content Include="Views\Subsite\Create.cshtml" />
+    <Content Include="Views\Subsite\CreateBatch.cshtml" />
+    <Content Include="Views\Subsite\Detail.cshtml" />
+    <Content Include="Views\Subsite\Edit.cshtml" />
+    <Content Include="Views\Subsite\Index.cshtml" />
+    <Content Include="Views\Template\Detail.cshtml" />
+    <Content Include="Views\Template\Edit.cshtml" />
+    <Content Include="Views\Template\EditCategory.cshtml" />
+    <Content Include="Views\Template\EditLayout.cshtml" />
+    <Content Include="Views\Template\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Pagination.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

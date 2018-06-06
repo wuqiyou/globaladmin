@@ -1,0 +1,27 @@
+﻿@using Global.Web.Models
+@model AppOptionViewModel
+
+<h2>Setting: App Settings</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Setting Key
+            </th>
+            <th>Setting Value
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.SettingKey
+                </td>
+                <td>
+                    @instance.SettingValue
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

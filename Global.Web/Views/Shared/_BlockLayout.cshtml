@@ -1,0 +1,15 @@
+﻿@using Global.Data
+@model BlockInfoDto
+
+<p><strong>Block(@Model.BlockId): @Model.Name</strong></p>
+<div class="rectangle">
+    @{
+        int index = 0;
+        foreach (var item in Model.Subitems)
+        {
+        <div class="rectangle subitem">
+            <p>@string.Format("{0}. {1}", ++index, @item.Label)</p>
+        </div>
+        }
+    }
+</div>

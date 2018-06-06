@@ -1,0 +1,91 @@
+﻿@using Framework.Core
+@using Global.Data
+@using Global.Web.Common
+@using Framework.Core.Helpers
+@using SubjectEngine.Core
+@using Global.Core
+@using Global.Web.Models
+@using System.Text;
+@model InstanceDetailViewModel
+<div class="actions">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Instance.Id })
+    @foreach (var action in Model.Actions)
+    {
+        @Html.ActionLink(
+            action.LinkText,
+            action.Action,
+            action.Controller,
+            action.Parameters,
+            null
+        )
+    }
+</div>
+<table>
+    @foreach (var field in Model.Subject.SubjectFields)
+    {
+        string textValue = string.Empty;
+        object value = ReflectionHelper.GetValue(Model.Instance, field.FieldKey);
+        <tr>
+            <td>
+                <strong>@field.FieldLabel</strong>
+            </td>
+            <td>
+                @switch (field.FieldDataType)
+                {
+                    case DucTypes.Checkbox:
+                        bool isChecked = Convert.ToBoolean(value);
+                    @Html.CheckBox(field.FieldKey, isChecked, new { @disabled = "disabled" })
+                        break;
+                    case DucTypes.Lookup:
+                    case DucTypes.Pickup:
+                    @Html.DropDownList(field.FieldKey, new SelectList(field.ListDataSource, BindingListItem.ValueProperty, BindingListItem.TextProperty, value), new { @disabled = "disabled" })
+                        break;
+                    case DucTypes.Text:
+                    case DucTypes.TextArea:
+                    case DucTypes.Email:
+                    case DucTypes.Integer:
+                    case DucTypes.Number:
+                    case DucTypes.Currency:
+                        if (value != null)
+                        {
+                            textValue = value.ToString();
+                        }
+                    @textValue
+                        break;
+                    case DucTypes.Date:
+                        if (value != null)
+                        {
+                            textValue = string.Format(UIConst.DateFormatString, value);
+                        }
+                    @textValue
+                        break;
+                    case DucTypes.Datetime:
+                        if (value != null)
+                        {
+                            textValue = string.Format(UIConst.DateTimeFormatString, value);
+                        }
+                    @textValue
+                        break;
+                    case DucTypes.Time:
+                        if (value != null)
+                        {
+                            textValue = string.Format(UIConst.TimeFormatString, value);
+                        }
+                    @textValue
+                        break;
+                    case DucTypes.Image:
+                        break;
+                    case DucTypes.Attachment:
+                        break;
+                    default:
+                        break;
+                }
+            </td>
+        </tr>
+    }
+</table>
+@foreach (var childList in Model.ChildLists)
+{
+    <h4>@childList.Title</h4>
+    Html.RenderPartial("InstanceList", childList);
+}

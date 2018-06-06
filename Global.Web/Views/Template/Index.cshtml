@@ -1,0 +1,51 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@using Global.Core
+@model TemplateListViewModel
+
+<h2>Setting: Template List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>En-Review</th>
+            <th>En-Category</th>
+            <th>Hide Title</th>
+            <th>Slug</th>
+            <th>Modified Date</th>
+            <th>Categorys</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.TemplateId
+                </td>
+                <td>
+                    @Html.ActionLink(@instance.Name, TemplateController.DetailAction, new { id = instance.TemplateId })
+                </td>
+                <td>
+                    @Html.CheckBox("EnableReview", @instance.EnableReview, new { @disabled = "disabled" })
+                </td>
+                <td>
+                    @Html.CheckBox("EnableCategory", @instance.EnableCategory, new { @disabled = "disabled" })
+                </td>
+                <td>
+                    @Html.CheckBox("HideTitle", @instance.HideTitle, new { @disabled = "disabled" })
+                </td>
+                <td>
+                    @instance.Slug
+                </td>
+                <td>
+                    @instance.ModifiedDate.ToString(UIConst.DateTimeFormat)
+                </td>
+                <td>
+                    @Html.ComposeStringCategoryText(instance.Categorys)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

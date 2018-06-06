@@ -1,0 +1,21 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@model DocumentViewModel
+
+<h2>Create New Document</h2>
+
+@using (Html.BeginForm(DocumentController.CreateAction, DocumentController.ControllerName, new { folderId = Model.FolderTree.CurrentFolder.FolderId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", DocumentController.ExplorerAction, new { id = Model.FolderTree.CurrentFolder.FolderId }, new { @class = "button" })
+    @Html.ValidationSummary();    
+    <div style="border-bottom: 1px solid #d6d6d6; padding: 0 2%; margin-top: 2%">
+        <p>
+            <strong>Select file: </strong>
+            <input type="file" name="file" />
+        </p>
+        <p>
+            <strong>Title: </strong>@Html.TextBox("Title", Model.Instance.Title)
+        </p>
+    </div>
+}

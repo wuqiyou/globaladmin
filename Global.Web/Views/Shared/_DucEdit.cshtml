@@ -1,0 +1,144 @@
+﻿@using SubjectEngine.Core
+@using Global.Data
+@using Global.Core
+@using Global.Web.Common.Models
+@using Global.Web.Controllers
+@model DucViewModel
+@{
+  DucValueDto value = Model.DucValue;
+  switch (Model.DucType)
+  {
+    case DucTypes.SubTitle:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "1", cols = "80" })
+      }
+      else
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), new { rows = "1", cols = "80" })
+      }
+      break;
+    case DucTypes.Text:
+    case DucTypes.Datetime:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "2", cols = "80" })
+      }
+      else
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), new { rows = "2", cols = "80" })
+      }
+      break;
+    case DucTypes.TextArea:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "10", cols = "80" })
+      }
+      else
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), new { rows = "10", cols = "80" })
+      }
+      break;
+    case DucTypes.Html:
+    case DucTypes.HtmlArea:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueHtml, new { rows = "10", cols = "80" })
+      }
+      else
+      {
+  @Html.TextArea(Html.GetClientId(Model.DucId), new { rows = "10", cols = "80" })
+      }
+  <script>
+    CKEDITOR.replace('@Html.GetClientId(Model.DucId)');
+  </script>
+      break;
+    case DucTypes.Hyperlink:
+      if (value != null)
+      {
+  <p>Hyperlink-Href: @Html.TextBox(string.Format(UIConst.ValueUrlKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueUrl)</p>
+  <p>Hyperlink-Text: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueText)</p>
+      }
+      else
+      {
+  <p>Hyperlink-Href: @Html.TextBox(string.Format(UIConst.ValueUrlKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+  <p>Hyperlink-Text: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+      }
+      break;
+    case DucTypes.Image:
+      if (value != null)
+      {
+  <a href="@value.ValueUrl">
+    <img src="@Html.FullImageUrl(@value.ValueUrl)" alt="@value.ValueText" title="@value.ValueText" />
+  </a>
+      }
+  <div>
+    <p>
+      Upload image file:
+            <input type="file" name="@string.Format(UIConst.FileKeyFormatString, Html.GetClientId(Model.DucId))" />
+    </p>
+    <p>
+      Image title: @Html.TextBox(string.Format(UIConst.ImageTitleKeyFormatString, Html.GetClientId(Model.DucId)))
+    </p>
+  </div>
+  <p>Or</p>
+      if (value != null)
+      {
+  <p>Image-Url: @Html.TextBox(string.Format(UIConst.ValueUrlKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueUrl)</p>
+  <p>Image-AltText: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueText)</p>
+      }
+      else
+      {
+  <p>Image-Url: @Html.TextBox(string.Format(UIConst.ValueUrlKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+  <p>Image-AltText: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+      }
+  @Ajax.ActionLink("Edit", DocumentController.DocumentListAction, DocumentController.ControllerName,
+                                 new { id = Model.DucId },
+                                 new AjaxOptions
+                                 {
+                                   UpdateTargetId = "availableDocuments",
+                                   Url = Url.Action(DocumentController.DocumentListAction, DocumentController.ControllerName)
+                                 })
+  <div id="availableDocuments" style="margin: 0px 0px 4px 250px; width: 740px; min-width: 400px;">
+  </div>            
+      break;
+    case DucTypes.Integer:
+      if (value != null)
+      {
+  @Html.TextBox(Html.GetClientId(Model.DucId), @value.ValueInt)
+      }
+      else
+      {
+  @Html.TextBox(Html.GetClientId(Model.DucId))
+      }
+      break;
+    case DucTypes.ReferenceList:
+      if (value != null)
+      {
+  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueInt)</p>
+  <p>ReferenceList-CategoryId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueText)</p>
+      }
+      else
+      {
+  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+  <p>ReferenceList-CategoryId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+      }
+      break;
+    case DucTypes.ReferenceCollection:
+      if (value != null)
+      {
+  <p>Collection Id: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueInt)</p>
+      }
+      else
+      {
+  <p>Collection Id: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+      }
+      break;
+    default:
+      break;
+  }
+}

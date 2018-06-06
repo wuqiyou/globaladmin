@@ -1,0 +1,47 @@
+﻿@using Global.Data
+@using Global.Core
+@model TemplateInfoDto
+<div class="section">
+    <table border="0">
+        <tr>
+            <td>
+                <strong>Name: </strong>
+            </td>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                <strong>Hide Title: </strong>
+            </td>
+            <td>
+                @Model.HideTitle
+            </td>
+            <td>
+                <strong>Enable Review: </strong>
+            </td>
+            <td>
+                @Model.EnableReview
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Created Date: </strong>
+            </td>
+            <td>
+                @Model.CreatedDate.ToString(UIConst.DateTimeFormat)
+            </td>
+            <td>
+                <strong>Modified Date: </strong>
+            </td>
+            <td>
+                @Model.ModifiedDate.ToString(UIConst.DateTimeFormat)
+            </td>
+            <td>
+                <strong>Slug: </strong>
+            </td>
+            <td>
+                @Model.Slug
+            </td>
+        </tr>
+    </table>
+</div>

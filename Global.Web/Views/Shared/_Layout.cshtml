@@ -1,0 +1,66 @@
+﻿@using Global.Web.Models
+@using Global.Web.Controllers
+@using Global.Web.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.PageTitle | Admin</title>
+    <meta name="robots" content="noindex" />
+    <link href="@Url.Content("~/Content/adminSite.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pagination.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.0/themes/redmond/jquery-ui.css" />
+    <!-- The Css UI theme extension of jqGrid -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/ui.jqgrid.css")" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")"></script>
+    <!-- jQuery library is a prerequisite for jqGrid -->
+    <!-- language pack - MUST be included before the jqGrid javascript -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/trirand/i18n/grid.locale-en.js")"></script>
+    <!-- the jqGrid javascript runtime -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/trirand/jquery.jqGrid.min.js")"></script>
+</head>
+<body>
+    <header>
+        @{Html.RenderAction(HeaderController.IndexAction, HeaderController.ControllerName);}
+    </header>
+    <div id="main">
+        @if (Model.FolderTree != null && Model.FolderTree.TreeRoot != null)
+        {
+            <div id="leftPanel">
+                <ul class="nonestyle">
+                    @{Html.RenderPartial("_FolderTree", (FolderNode)Model.FolderTree.TreeRoot);}
+                </ul>
+            </div>
+        }
+        <div id="content">
+            <div class="titlebar">
+                @if (WebContext.Current.SiteOption.IsMultiLanguageSupported && Model.CurrentLanguage != null)
+                {
+                    <div style="float: right;">
+                        @using (Html.BeginForm())
+                        {
+                            <strong>Language: </strong>
+                            if (Model.IsEditing)
+                            {
+                            @Html.DropDownList("SelectedLanguageId", new SelectList(WebContext.Current.AvailableLanguages, "Id", "Label", Model.CurrentLanguage.Id), new { @disabled = "disabled", @readonly = "true" })
+                            }
+                            else
+                            {
+                            @Html.DropDownList("SelectedLanguageId", new SelectList(WebContext.Current.AvailableLanguages, "Id", "Label", Model.CurrentLanguage.Id), new { onchange = "this.form.submit();" })
+                            }
+                        }
+                    </div>
+                }
+                <h3>
+                    @Model.PageTitle
+                </h3>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+</html>

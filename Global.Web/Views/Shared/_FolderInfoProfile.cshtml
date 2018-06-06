@@ -1,0 +1,33 @@
+﻿@using Global.Data
+@using Global.Core
+@model FolderInfoDto
+<div class="section">
+    <table border="0">
+        <tr>
+            <td>
+                <strong>Name: </strong>
+            </td>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                <strong>Full Name: </strong>
+            </td>
+            <td>
+                @Model.FullName
+            </td>
+            <td>
+                <strong>Full Slug: </strong>
+            </td>
+            <td>
+                @Model.FullSlug
+            </td>
+            <td>
+                <strong>Is Subsite Root: </strong>
+            </td>
+            <td>
+                @Model.IsSubsiteRoot
+            </td>
+        </tr>
+    </table>
+</div>

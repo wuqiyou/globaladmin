@@ -1,0 +1,43 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@using Global.Core
+@model BlockListViewModel
+
+<h2>Setting: Block List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Is BuiltIn</th>
+            <th>WidgetName</th>
+            <th>Description</th>
+            <th>Modified Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.BlockId
+                </td>
+                <td>
+                    @Html.ActionLink(@instance.Name, BlockController.DetailAction, new { id = instance.BlockId })
+                </td>
+                <td>
+                    @Html.CheckBox("IsBuiltIn", @instance.IsBuiltIn, new { @disabled = "disabled" })
+                </td>
+                <td>
+                    @instance.WidgetName
+                </td>
+                <td>
+                    @instance.Description
+                </td>
+                <td>
+                    @instance.ModifiedDate.ToString(UIConst.DateTimeFormat)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

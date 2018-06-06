@@ -1,0 +1,39 @@
+﻿@using SubjectEngine.Core
+@using Global.Data
+@using Global.Web.Models
+@using Global.Web.Common.Models
+@model ReferenceBlockViewModel
+
+<p><strong>Block: @Model.Block.Name</strong></p>
+<div class="rectangle">
+    @{
+        int index = 0;
+        foreach (var subitem in Model.Block.Subitems)
+        {
+        <div class="rectangle subitem">
+            <p><strong>@string.Format("{0}. {1}", ++index, @subitem.Label)</strong></p>
+            @if (subitem.DucType != DucTypes.Grid)
+            {
+                DucValueDto value = null;
+                if (Model.Reference.ValuesDic.ContainsKey(subitem.SubitemId))
+                {
+                    value = Model.Reference.ValuesDic[subitem.SubitemId];
+                }
+                Html.RenderPartial("_DucEdit", new DucViewModel { DucId = subitem.SubitemId, DucType = subitem.DucType, DucValue = value, CurrentLanguage = Model.CurrentLanguage });
+            }
+            else
+            {
+                if (subitem.Grid != null)
+                {
+                    GridViewModel vm = new GridViewModel();
+                    vm.ReferenceId = Model.Reference.ReferenceId;
+                    vm.CurrentLanguage = Model.CurrentLanguage;
+                    vm.Grid = subitem.Grid;
+                    vm.GridRows = Model.Reference.GridRows.Where(o => object.Equals(o.GridId, subitem.Grid.Id));
+                    Html.RenderPartial("_GridDetail", vm);
+                }
+            }
+        </div>
+        }
+    }
+</div>

@@ -1,0 +1,41 @@
+﻿@using Global.Web.Models
+@model SettingViewModel
+
+<h2>Setting: Alias List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Url Alias
+            </th>
+            <th>Reference Name
+            </th>
+            <th>Reference Id</th>
+            <th>Folder
+            </th>
+            <th>Template
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.UrlAlias
+                </td>
+                <td>
+                    @instance.Name
+                </td>
+                <td>
+                    @instance.ReferenceId
+                </td>
+                <td>
+                    @instance.Folder
+                </td>
+                <td>
+                    @instance.Template
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

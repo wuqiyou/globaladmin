@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Web", "Global.Web\Global.Web.csproj", "{CF0C2032-D792-4C3A-9791-BF9E664D207E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Data", "Global.Data\Global.Data.csproj", "{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Service", "Global.Service\Global.Service.csproj", "{7BB41930-D18A-40D4-847C-B1BD350BC75D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Service.Contract", "Global.Service.Contract\Global.Service.Contract.csproj", "{F093D128-81EB-4B9F-BB62-811244FF922E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Web.Models", "Global.Web.Models\Global.Web.Models.csproj", "{D603041D-CD06-4309-BA82-9A5343071BFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Registry", "Global.Registry\Global.Registry.csproj", "{5F9F3907-BCB1-42F6-8D6C-8CE81ABF5A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.DataConverter", "Global.DataConverter\Global.DataConverter.csproj", "{B7668496-CEF8-433E-90D5-51EC7222A5EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Core", "Global.Core\Global.Core.csproj", "{D54E2B37-BFF5-4B16-9A06-F7628C6752C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Web.Common", "Global.Web.Common\Global.Web.Common.csproj", "{6EF8B5C6-E349-4BEC-A37F-00830ADBCD1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2FB79DD7-D021-4D32-B6DB-7D837692433D}"
+	ProjectSection(SolutionItems) = preProject
+		Database\CreateStoredProcedures.sql = Database\CreateStoredProcedures.sql
+		Database\CreateTables.sql = Database\CreateTables.sql
+		Database\CreateViews.sql = Database\CreateViews.sql
+		Database\InsertReference.sql = Database\InsertReference.sql
+		Database\insertSubject.sql = Database\insertSubject.sql
+		Database\InsertTablesData.sql = Database\InsertTablesData.sql
+		Database\InsertTablesScript.sql = Database\InsertTablesScript.sql
+		Database\SyncData.sql = Database\SyncData.sql
+		Database\SyncSubjects.sql = Database\SyncSubjects.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF0C2032-D792-4C3A-9791-BF9E664D207E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0C2032-D792-4C3A-9791-BF9E664D207E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0C2032-D792-4C3A-9791-BF9E664D207E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0C2032-D792-4C3A-9791-BF9E664D207E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB41930-D18A-40D4-847C-B1BD350BC75D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB41930-D18A-40D4-847C-B1BD350BC75D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB41930-D18A-40D4-847C-B1BD350BC75D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB41930-D18A-40D4-847C-B1BD350BC75D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F093D128-81EB-4B9F-BB62-811244FF922E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F093D128-81EB-4B9F-BB62-811244FF922E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F093D128-81EB-4B9F-BB62-811244FF922E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F093D128-81EB-4B9F-BB62-811244FF922E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D603041D-CD06-4309-BA82-9A5343071BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D603041D-CD06-4309-BA82-9A5343071BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D603041D-CD06-4309-BA82-9A5343071BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D603041D-CD06-4309-BA82-9A5343071BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9F3907-BCB1-42F6-8D6C-8CE81ABF5A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9F3907-BCB1-42F6-8D6C-8CE81ABF5A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9F3907-BCB1-42F6-8D6C-8CE81ABF5A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9F3907-BCB1-42F6-8D6C-8CE81ABF5A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7668496-CEF8-433E-90D5-51EC7222A5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7668496-CEF8-433E-90D5-51EC7222A5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7668496-CEF8-433E-90D5-51EC7222A5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7668496-CEF8-433E-90D5-51EC7222A5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54E2B37-BFF5-4B16-9A06-F7628C6752C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54E2B37-BFF5-4B16-9A06-F7628C6752C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54E2B37-BFF5-4B16-9A06-F7628C6752C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54E2B37-BFF5-4B16-9A06-F7628C6752C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF8B5C6-E349-4BEC-A37F-00830ADBCD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF8B5C6-E349-4BEC-A37F-00830ADBCD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF8B5C6-E349-4BEC-A37F-00830ADBCD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF8B5C6-E349-4BEC-A37F-00830ADBCD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

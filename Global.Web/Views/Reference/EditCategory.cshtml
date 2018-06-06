@@ -1,0 +1,36 @@
+﻿@using Global.Data
+@using Global.Web.Controllers
+@model Global.Web.Models.ReferenceEditCategoryViewModel
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", ReferenceController.DetailAction, new { id = Model.Instance.ReferenceId }, new { @class = "button" })
+    @Html.ValidationSummary();    
+    @Html.Partial("_ReferenceProfile", Model)
+    <div class="section">
+        <p><strong>Available Categories: </strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Id</th>
+                    <th>Selected</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var instance in Model.AvailableCategorys)
+                {
+                    <tr>
+                        <td>@instance.Entity.CategoryText</td>
+                        <td>@instance.Entity.Id</td>
+                        <td>@if (instance.IsSelected)
+                            { @instance.IsSelected }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p><strong>Input Categories (Input Id): </strong>@Html.TextBox("CategorysInput", @Html.ComposeStringCategoryId(Model.Instance.ReferenceCategorys))</p>
+    </div>
+}

@@ -1,0 +1,17 @@
+﻿@using Global.Data
+@using Global.Web.Controllers
+@model Global.Web.Models.TemplateEditViewModel
+
+<h2>Template Category Edit: @Model.Instance.Name</h2>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", TemplateController.DetailAction, new { id = Model.Instance.TemplateId }, new { @class = "button" })
+    @Html.ValidationSummary();    
+    @Html.Partial("_TemplateProfile", Model.Instance)
+    <div class="section">
+        <p><strong>Current Categories: </strong>@Html.ComposeStringCategoryText(Model.Instance.Categorys)</p>
+        <p><strong>Add Categories (Separate by ,): </strong></p>
+        <p>@Html.TextArea("CategorysInput", new { rows = 4, cols = 80 })</p>
+    </div>
+}

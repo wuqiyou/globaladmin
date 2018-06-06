@@ -1,0 +1,8 @@
+﻿@using Global.Web.Models
+@model SubsiteListViewModel
+
+@{Html.RenderPartial("InstanceList", Model.InstanceListViewModel);}
+
+<div class="actions">
+    @Html.ActionLink("Create Batch", "CreateBatch")
+</div>

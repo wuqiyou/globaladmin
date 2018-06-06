@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7BB41930-D18A-40D4-847C-B1BD350BC75D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Global.Service</RootNamespace>
+    <AssemblyName>Global.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Framework.Component">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Component.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Core">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Data">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Service">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.UoW">
+      <HintPath>..\..\betterslice\Library\Component\Framework.UoW.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Component">
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Component.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Core">
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Data">
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseService.cs" />
+    <Compile Include="BlockService.cs" />
+    <Compile Include="CollectionService.cs" />
+    <Compile Include="DataTypeService.cs" />
+    <Compile Include="DocumentService.cs" />
+    <Compile Include="FolderService.cs" />
+    <Compile Include="GeneralService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceService.cs" />
+    <Compile Include="ReviewService.cs" />
+    <Compile Include="SubjectService.cs" />
+    <Compile Include="SubsiteService.cs" />
+    <Compile Include="TemplateService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Global.Core\Global.Core.csproj">
+      <Project>{d54e2b37-bff5-4b16-9a06-f7628c6752c0}</Project>
+      <Name>Global.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.DataConverter\Global.DataConverter.csproj">
+      <Project>{b7668496-cef8-433e-90d5-51ec7222a5ec}</Project>
+      <Name>Global.DataConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Data\Global.Data.csproj">
+      <Project>{f7a518d6-1d67-4144-ba76-0cfbe6f668f1}</Project>
+      <Name>Global.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Registry\Global.Registry.csproj">
+      <Project>{5f9f3907-bcb1-42f6-8d6c-8ce81abf5a73}</Project>
+      <Name>Global.Registry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global.Service.Contract\Global.Service.Contract.csproj">
+      <Project>{f093d128-81eb-4b9f-bb62-811244ff922e}</Project>
+      <Name>Global.Service.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,97 @@
+﻿@using Global.Web.Models
+@model MenuViewModel
+
+<h2>Setting: Menus</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name
+            </th>
+            <th>Menu Text
+            </th>
+            <th>Tooltip
+            </th>
+            <th>Navigate Url
+            </th>
+            <th>Sort
+            </th>
+            <th>Is Published
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    @instance.Name
+                </td>
+                <td>
+                    @instance.MenuText
+                </td>
+                <td>
+                    @instance.Tooltip
+                </td>
+                <td>
+                    @instance.NavigateUrl
+                </td>
+                <td>
+                    @instance.Sort
+                </td>
+                <td>
+                    @Html.CheckBox("IsPublished", @instance.IsPublished, new { @disabled = "disabled" })
+                </td>
+            </tr>
+            if (instance.SubMenus != null && instance.SubMenus.Count() > 0)
+            {
+            <tr>
+                <td colspan="5">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name
+                                </th>
+                                <th>Menu Text
+                                </th>
+                                <th>Tooltip
+                                </th>
+                                <th>Navigate Url
+                                </th>
+                                <th>Sort
+                                </th>
+                                <th>Is Published
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var subitem in instance.SubMenus)
+                        { 
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @subitem.Name
+                                    </td>
+                                    <td>
+                                        @subitem.MenuText
+                                    </td>
+                                    <td>
+                                        @subitem.Tooltip
+                                    </td>
+                                    <td>
+                                        @subitem.NavigateUrl
+                                    </td>
+                                    <td>
+                                        @subitem.Sort
+                                    </td>
+                                    <td>
+                                        @Html.CheckBox("IsPublished", @subitem.IsPublished, new { @disabled = "disabled" })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

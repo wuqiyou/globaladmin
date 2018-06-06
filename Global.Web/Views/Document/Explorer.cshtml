@@ -1,0 +1,51 @@
+﻿@using Global.Core
+@using Global.Web.Controllers
+@model Global.Web.Models.DocumentListViewModel
+
+<h2>Document Explorer: @Model.FolderTree.CurrentFolder.Name</h2>
+<div id="actions">
+    @Html.ActionLink("New", DocumentController.CreateAction, new { folderId = Model.FolderTree.CurrentFolder.FolderId }, new { @class = "button" })
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title
+            </th>
+            <th>Image Url
+            </th>
+            <th>Created Time
+            </th>
+            <th>ID</th>
+            <th>Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        { 
+            <tr>
+                <td>
+                    <a href="@Url.Action("Detail", new { id = instance.Id })">
+                        <img src="@Html.FullImageUrl(@instance.ContentUri)" style="border: solid; border-width:1px; width: 100px; height: 60px" />
+                    </a>
+                </td>
+                <td>
+                    @Html.ActionLink(@instance.Title, "Detail", new { id = instance.Id })
+                </td>
+                <td>
+                    @instance.ContentUri
+                </td>
+                <td>
+                    @string.Format(UIConst.DateTimeFormatString, instance.IssuedDate)
+                </td>
+                <td>
+                    @instance.Id
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = instance.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

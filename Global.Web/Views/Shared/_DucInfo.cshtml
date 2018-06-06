@@ -1,0 +1,78 @@
+﻿@using SubjectEngine.Core
+@using Global.Data
+@using Global.Web.Common.Models
+@model DucViewModel
+@{
+  DucValueDto value = Model.DucValue;
+  switch (Model.DucType)
+  {
+    case DucTypes.SubTitle:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  <div>@value.ValueText</div>
+      }
+      break;
+    case DucTypes.Text:
+    case DucTypes.TextArea:
+    case DucTypes.Datetime:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  <div>@Html.Raw(value.ValueText)</div>
+      }
+      break;
+    case DucTypes.Html:
+    case DucTypes.HtmlArea:
+  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+      if (value != null)
+      {
+  <div>@Html.Raw(value.ValueHtml)</div>
+      }
+      break;
+    case DucTypes.Hyperlink:
+      if (value != null)
+      {
+  <h3><a href="@value.ValueUrl">@value.ValueText</a></h3>
+      }
+      break;
+    case DucTypes.Image:
+      if (value != null)
+      {
+  <a href="@value.ValueUrl">
+    <img src="@Html.FullImageUrl(@value.ValueUrl)" alt="@value.ValueText" title="@value.ValueText" />
+  </a>
+      }
+      break;
+    case DucTypes.Integer:
+      if (value != null)
+      {
+  <div>@value.ValueInt</div>
+      }
+      break;
+    case DucTypes.ReferenceList:
+      if (value != null)
+      {
+  <p><strong>Template Id: </strong>@value.ValueInt</p>
+  <p><strong>Category Id: </strong>@value.ValueText</p>
+      }
+      else
+      {
+  <p><strong>Template Id: </strong></p>
+  <p><strong>Category Id: </strong></p>
+      }
+      break;
+    case DucTypes.ReferenceCollection:
+      if (value != null)
+      {
+  <p><strong>Collection Id: </strong>@value.ValueInt</p>
+      }
+      else
+      {
+  <p><strong>Collection Id: </strong></p>
+      }
+      break;
+    default:
+      break;
+  }
+}

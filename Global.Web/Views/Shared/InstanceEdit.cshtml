@@ -1,0 +1,81 @@
+﻿@using Framework.Core
+@using Global.Data
+@using Global.Web.Common
+@using Framework.Core.Helpers
+@using SubjectEngine.Core
+@using Global.Core
+@using Global.Web.Models
+@model InstanceEditViewModel
+@using (Html.BeginForm())
+{
+    <div class="actions">
+        <input type="submit" value="Save" />
+        @if (Model.Instance.IsNew)
+        {
+            @Html.ActionLink("Cancel", "Index")
+        }
+        else
+        {
+            @Html.ActionLink("Cancel", "Detail", new { id = Model.Instance.Id })
+        }
+    </div>
+    @Html.ValidationSummary()
+    <table>
+        @foreach (var field in Model.Subject.SubjectFields)
+        {
+            if (field.IsReadonly)
+            {
+                continue;
+            }
+            object value = ReflectionHelper.GetValue(Model.Instance, field.FieldKey);
+            <tr>
+                <td>
+                    <strong>@field.FieldLabel</strong>
+                </td>
+                <td>
+                    @switch (field.FieldDataType)
+                    {
+                        case DucTypes.Checkbox:
+                            bool isChecked = Convert.ToBoolean(value);
+                        @Html.CheckBox(field.FieldKey, isChecked)
+                            break;
+                        case DucTypes.Lookup:
+                        case DucTypes.Pickup:
+                            if (field.IsRequired)
+                            {
+                        @Html.DropDownList(field.FieldKey, new SelectList(field.ListDataSource, BindingListItem.ValueProperty, BindingListItem.TextProperty, value))
+                            }
+                            else
+                            {
+                        @Html.DropDownList(field.FieldKey, new SelectList(field.ListDataSource, BindingListItem.ValueProperty, BindingListItem.TextProperty, value), "")
+                            }
+                            break;
+                        case DucTypes.Text:
+                        case DucTypes.TextArea:
+                        case DucTypes.Email:
+                        case DucTypes.Integer:
+                        case DucTypes.Number:
+                        case DucTypes.Currency:
+                        @Html.TextBox(field.FieldKey, value)
+                            break;
+                        case DucTypes.Date:
+                        @Html.TextBox(field.FieldKey, value)
+                            break;
+                        case DucTypes.Datetime:
+                        @Html.TextBox(field.FieldKey, value)
+                            break;
+                        case DucTypes.Time:
+                        @Html.TextBox(field.FieldKey, value)
+                            break;
+                        case DucTypes.Image:
+                            break;
+                        case DucTypes.Attachment:
+                            break;
+                        default:
+                            break;
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}

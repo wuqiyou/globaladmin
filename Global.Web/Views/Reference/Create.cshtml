@@ -1,0 +1,52 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@using Global.Web.Common
+@model ReferenceCreateViewModel
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", FolderController.ExplorerAction, FolderController.ControllerName, new { id = Model.FolderTree.CurrentFolder.FolderId }, new { @class = "button" })
+    @Html.ValidationSummary();    
+    <div style="border-bottom: 1px solid #d6d6d6; padding: 0 2%; margin-top: 2%">
+        <p>
+            <strong>Name: </strong>
+            @Html.TextBox("Name", Model.Instance.Name)
+        </p>
+        <p>
+            <strong>Slug: </strong>
+            @Html.TextBox("Slug", Model.Instance.Slug)
+        </p>
+        <p>
+            <strong>Title: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        <p>
+            @Html.TextBox("Title", Model.Instance.Title)
+        </p>
+        <p>
+            <strong>Description: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        <p>
+            @Html.TextArea("Description", Model.Instance.Description, new { rows = 4, cols = 80 })
+        </p>
+        <p>
+            <strong>Keywords: </strong>
+            @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
+        </p>
+        <p>
+            @Html.TextArea("Keywords", Model.Instance.Keywords, new { rows = 4, cols = 80 })
+        </p>
+        <p>
+            <strong>Enable Ad: </strong>
+            @Html.CheckBox("EnableAds", Model.Instance.EnableAds)
+        </p>
+        <p>
+            <strong>Enable Top Ad: </strong>@Html.CheckBox("EnableTopAd", @Model.Instance.EnableTopAd)
+        </p>
+        <p>
+            <strong>Template: </strong>@Html.DropDownList("SelectedTemplateId", new SelectList(Model.AvailableTemplates, "TemplateId", "Name"), "Choose Template")
+        </p>
+    </div>
+}

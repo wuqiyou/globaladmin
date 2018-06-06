@@ -1,0 +1,24 @@
+﻿@model Global.Web.Models.FolderNode
+<li>
+    @{
+        string style = string.Empty;
+        if (Model.IsSelected)
+        {
+            style = "selected ";
+        }
+        if (Model.IsSubsiteRoot)
+        {
+            style = style + "subsiteroot";
+        }
+    }
+    @Html.ActionLink(Model.Name, Model.Action, Model.Controller, new { id = Model.Id }, new { @class = @style })
+    @if (Model.SubNodes.Count > 0)
+    {
+        <ul class="nonestyle">
+            @foreach (var item in Model.SubNodes)
+            {
+                Html.RenderPartial("_FolderTree", item);
+            }
+        </ul>
+    }
+</li>

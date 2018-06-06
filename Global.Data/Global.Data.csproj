@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7A518D6-1D67-4144-BA76-0CFBE6F668F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Global.Data</RootNamespace>
+    <AssemblyName>Global.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Framework.Core">
+      <HintPath>..\..\betterslice\Library\Component\Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SubjectEngine.Core">
+      <HintPath>..\..\betterslice\Library\Component\SubjectEngine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliasInfoDto.cs" />
+    <Compile Include="ApplicationSettingDto.cs" />
+    <Compile Include="BlockDto.cs" />
+    <Compile Include="BlockInfoDto.cs" />
+    <Compile Include="CategoryDto.cs" />
+    <Compile Include="CollectionDto.cs" />
+    <Compile Include="CollectionItemDto.cs" />
+    <Compile Include="DataTypeDto.cs" />
+    <Compile Include="DEntityDto.cs" />
+    <Compile Include="DEntityItemDto.cs" />
+    <Compile Include="DocumentDto.cs" />
+    <Compile Include="DocumentInfoDto.cs" />
+    <Compile Include="DucValueDto.cs" />
+    <Compile Include="FolderDto.cs" />
+    <Compile Include="FolderInfoDto.cs" />
+    <Compile Include="FolderLanguageDto.cs" />
+    <Compile Include="FolderTreeDto.cs" />
+    <Compile Include="GridColumnDto.cs" />
+    <Compile Include="GridDto.cs" />
+    <Compile Include="GridRowDto.cs" />
+    <Compile Include="KeywordDto.cs" />
+    <Compile Include="LanguageDto.cs" />
+    <Compile Include="LocationDto.cs" />
+    <Compile Include="LocationLanguageDto.cs" />
+    <Compile Include="MainMenuDto.cs" />
+    <Compile Include="MainMenuLanguageDto.cs" />
+    <Compile Include="MetadataDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceBriefDto.cs" />
+    <Compile Include="ReferenceCategoryDto.cs" />
+    <Compile Include="ReferenceDto.cs" />
+    <Compile Include="ReferenceInfoDto.cs" />
+    <Compile Include="ReferenceKeywordInfoDto.cs" />
+    <Compile Include="ReviewDto.cs" />
+    <Compile Include="SearchResultDto.cs" />
+    <Compile Include="SubitemDto.cs" />
+    <Compile Include="SubitemInfoDto.cs" />
+    <Compile Include="SubjectChildListDto.cs" />
+    <Compile Include="SubjectDto.cs" />
+    <Compile Include="SubjectFieldDto.cs" />
+    <Compile Include="SubjectInfoDto.cs" />
+    <Compile Include="SubsiteBatchDto.cs" />
+    <Compile Include="SubsiteBriefDto.cs" />
+    <Compile Include="SubsiteCreateDto.cs" />
+    <Compile Include="SubsiteDto.cs" />
+    <Compile Include="SubsiteInfoDto.cs" />
+    <Compile Include="SubsiteLanguageInfoDto.cs" />
+    <Compile Include="SubsiteMenuDto.cs" />
+    <Compile Include="SubsiteMenuLanguageDto.cs" />
+    <Compile Include="TemplateDto.cs" />
+    <Compile Include="TemplateInfoDto.cs" />
+    <Compile Include="UserDto.cs" />
+    <Compile Include="ZoneDto.cs" />
+    <Compile Include="ZoneInfoDto.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

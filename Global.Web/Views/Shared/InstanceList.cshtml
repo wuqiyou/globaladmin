@@ -1,0 +1,126 @@
+﻿@using Framework.Core
+@using Global.Data
+@using Global.Web.Common
+@using Framework.Core.Helpers
+@using SubjectEngine.Core
+@using Global.Core
+@using Global.Web.Models
+@model InstanceListViewModel
+@if (Model.AllowListAdd)
+{
+    <div class="actions">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+}
+<table>
+    <thead>
+        <tr>
+            @foreach (var field in Model.Subject.SubjectFields)
+            {
+                if (field.IsShowInGrid)
+                { 
+                <th>
+                    @field.FieldLabel
+                </th>
+                }
+            }
+            @if (Model.Subject.AllowListEdit)
+            {
+                <th>Edit
+                </th>
+            }
+            @if (Model.Subject.AllowListDelete)
+            {
+                <th>Delete
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model.Instances)
+        {
+            object idValue = ReflectionHelper.GetValue(instance, BaseDto.FLD_StringId);
+            <tr>
+                @foreach (var field in Model.Subject.SubjectFields)
+                {
+                    if (!field.IsShowInGrid)
+                    {
+                        continue;
+                    }
+                    string textValue = string.Empty;
+                    object value = ReflectionHelper.GetValue(instance, field.FieldKey);
+                    if (value == null)
+                    {
+                    <td>
+                        @textValue
+                    </td>
+                        continue;
+                    }
+                    <td>
+                        @if (field.IsLinkInGrid && field.FieldDataType != DucTypes.Lookup && field.FieldDataType != DucTypes.Pickup)
+                        {
+                            textValue = value.ToString();
+                            @Html.ActionLink(textValue, "Detail", new { id = idValue })
+                        }
+                        else
+                        {
+                            switch (field.FieldDataType)
+                            {
+                                case DucTypes.Checkbox:
+                                    bool isChecked = Convert.ToBoolean(value);
+                            @Html.CheckBox(field.FieldKey, isChecked, new { @disabled = "disabled" })
+                                    break;
+                                case DucTypes.Lookup:
+                                case DucTypes.Pickup:
+                                    if (value != null)
+                                    {
+                            @Html.DropDownList(field.FieldKey, new SelectList(field.ListDataSource, BindingListItem.ValueProperty, BindingListItem.TextProperty, value), new { @disabled = "disabled" })
+                                    }
+                                    break;
+                                case DucTypes.Text:
+                                case DucTypes.TextArea:
+                                case DucTypes.Email:
+                                case DucTypes.Integer:
+                                case DucTypes.Number:
+                                case DucTypes.Currency:
+                                    textValue = value.ToString();
+                            @textValue
+                                    break;
+                                case DucTypes.Date:
+                                    textValue = string.Format(UIConst.DateFormatString, value);
+                            @textValue
+                                    break;
+                                case DucTypes.Datetime:
+                                    textValue = string.Format(UIConst.DateTimeFormatString, value);
+                            @textValue
+                                    break;
+                                case DucTypes.Time:
+                                    textValue = string.Format(UIConst.TimeFormatString, value);
+                            @textValue
+                                    break;
+                                case DucTypes.Image:
+                                    break;
+                                case DucTypes.Attachment:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    </td>
+                }
+                @if (Model.Subject.AllowListEdit)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = idValue })
+                    </td>
+                }
+                @if (Model.Subject.AllowListDelete)
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = idValue })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@using Global.Core
+@using Global.Data
+@model IEnumerable<DocumentDto>
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title
+            </th>
+            <th>Image Url
+            </th>
+            <th>Created Time
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model)
+        { 
+            <tr>
+                <td>
+                    <img src="@Html.FullImageUrl(@instance.ContentUri)" style="border: solid; border-width:1px; width: 100px; height: 60px" />
+                </td>
+                <td>
+                    @instance.Title
+                </td>
+                <td>
+                    @instance.ContentUri
+                </td>
+                <td>
+                    @string.Format(UIConst.DateTimeFormatString, instance.IssuedDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

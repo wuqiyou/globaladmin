@@ -1,0 +1,7 @@
+﻿@using Global.Web.Common
+@model Global.Data.LanguageDto
+
+@if (WebContext.Current.SiteOption.IsMultiLanguageSupported)
+{
+    @:[@Model.Label]
+}

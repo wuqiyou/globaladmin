@@ -1,0 +1,86 @@
+﻿@using Global.Core
+@using Global.Web.Controllers
+@model Global.Web.Models.FolderInfoViewModel
+
+@Html.Partial("_FolderInfoProfile", Model.Instance)
+<div class="actions">
+  @Html.ActionLink("New Page", ReferenceController.CreateAction, ReferenceController.ControllerName, new { folderId = Model.FolderTree.CurrentFolder.FolderId }, new { })
+  @Html.ActionLink("Edit Folder", FolderController.EditAction, FolderController.ControllerName, new { id = Model.FolderTree.CurrentFolder.FolderId }, new { })
+</div>
+@if (Model.Pagination != null && !Model.Pagination.IsSuppressed)
+{
+  Html.RenderPartial("_Pagination", Model.Pagination);
+}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name
+      </th>
+      <th>Title
+      </th>
+      <th>Slug
+      </th>
+      <th>UrlAlias
+      </th>
+      <th>Last Modified
+      </th>
+      <th>Template
+      </th>
+      <th>CreatedById
+      </th>
+      <th>Published
+      </th>
+      <th>Publish
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var instance in Model.References)
+    { 
+      <tr>
+        <td>
+          @instance.ReferenceId
+        </td>
+        <td>
+          @Html.ActionLink(@instance.Name, ReferenceController.DetailAction, ReferenceController.ControllerName, new { id = instance.ReferenceId }, new { })
+        </td>
+        <td>
+          @instance.Title
+        </td>
+        <td>
+          @instance.Slug
+        </td>
+        <td>
+          <a href="@Html.LocalizeHrefFromAdmin(@instance.UrlAlias)" target="_blank">@instance.UrlAlias</a>
+        </td>
+        <td>
+          @instance.ModifiedDate.ToString(UIConst.DateTimeFormat)
+        </td>
+        <td>
+          @instance.Template
+        </td>
+        <td>
+          @instance.CreatedById
+        </td>
+        <td>
+          @Html.CheckBox("IsPublished", @instance.IsPublished, new { @disabled = "disabled" })
+        </td>
+        <td>
+          @if (instance.IsPublished)
+          {
+            @Html.ActionLink("Unpublish", ReferenceController.UnpublishAction, ReferenceController.ControllerName, new { id = instance.ReferenceId, folderId = Model.FolderTree.CurrentFolder.FolderId }, new { });
+          }
+          else
+          {
+            @Html.ActionLink("Publish", ReferenceController.PublishAction, ReferenceController.ControllerName, new { id = instance.ReferenceId, folderId = Model.FolderTree.CurrentFolder.FolderId }, new { });
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+@if (Model.Pagination != null && !Model.Pagination.IsSuppressed)
+{
+  Html.RenderPartial("_Pagination", Model.Pagination);
+}

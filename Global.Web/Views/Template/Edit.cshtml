@@ -1,0 +1,18 @@
+﻿@using Global.Web.Controllers
+@using Global.Data
+@model Global.Web.Models.TemplateEditViewModel
+
+<h2>Template Basic Edit: @Model.Instance.Name</h2>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", TemplateController.DetailAction, new { id = Model.Instance.TemplateId }, new { @class = "button" })
+    @Html.Partial("_TemplateProfile", Model.Instance)
+    <p><strong>Basic</strong></p>
+    <div class="section">
+        <p><strong>Name: </strong>@Html.TextBox("Name", @Model.Instance.Name)</p>
+        <p><strong>Slug: </strong>@Html.TextBox("Slug", @Model.Instance.Slug)</p>
+        <p><strong>Hide Title: </strong>@Html.CheckBox("HideTitle", @Model.Instance.HideTitle)</p>
+        <p><strong>Enable Review: </strong>@Html.CheckBox("EnableReview", @Model.Instance.EnableReview)</p>
+    </div>
+}

@@ -1,0 +1,54 @@
+﻿@using Global.Data
+@using SubjectEngine.Core
+@using Global.Web.Models
+@using Global.Web.Common.Models
+@model GridViewModel
+
+<table style="width: 100%">
+    <tr>
+        @if (Model.Grid.ViewMode == ViewMode.GridView)
+        {
+            foreach (var column in Model.Grid.Columns)
+            {
+            <th>@column.ColumnName</th>
+            }
+        }
+        else
+        {
+            <th>
+                @foreach (var column in Model.Grid.Columns)
+                {
+                    @column.ColumnName <br />
+                }
+            </th>
+        }
+    </tr>
+    @foreach (GridRowDto row in Model.GridRows)
+    {
+        <tr>
+            @if (Model.Grid.ViewMode == ViewMode.GridView)
+            {
+                foreach (var column in Model.Grid.Columns)
+                {
+                    DucValueDto value = row.Cells.SingleOrDefault(o => object.Equals(o.DucId, column.Id));
+                <td>
+                    @{Html.RenderPartial("_DucInfo", new DucViewModel { DucId = column.Id, DucType = column.ColumnType, DucValue = value, CurrentLanguage = Model.CurrentLanguage });}
+                </td>
+                }
+            }
+            else
+            {
+                <td>
+                    <div style="padding: 0 2%; margin-top: 2%">
+                        @foreach (var column in Model.Grid.Columns)
+                        {
+                            DucValueDto value = row.Cells.SingleOrDefault(o => object.Equals(o.DucId, column.Id));
+                            Html.RenderPartial("_DucInfo", new DucViewModel { DucId = column.Id, DucType = column.ColumnType, DucValue = value, CurrentLanguage = Model.CurrentLanguage });
+                        }
+                    </div>
+                </td>
+            }
+            <td>
+        </tr>
+    }
+</table>

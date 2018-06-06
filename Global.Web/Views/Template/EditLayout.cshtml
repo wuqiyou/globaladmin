@@ -1,0 +1,10 @@
+﻿@using Global.Web.Controllers
+@model Global.Web.Models.TemplateEditViewModel
+
+<h2>Template Layout Edit: @Model.Instance.Name</h2>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", TemplateController.DetailAction, new { id = Model.Instance.TemplateId }, new { @class = "button" })
+    @Html.Partial("_TemplateProfile", Model.Instance)
+}

@@ -1,0 +1,25 @@
+﻿@using Global.Web.Controllers
+@using Global.Web.Models
+@model DocumentViewModel
+
+<h2>Document Edit: @Model.Instance.Title</h2>
+@using (Html.BeginForm("Edit", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();    
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", DocumentController.DetailAction, new { id = Model.Instance.Id }, new { @class = "button" })
+    <div class="section">
+        <div>
+            <img style="border: solid; border-width:1px" src="@Html.FullImageUrl(@Model.Instance.ContentUri)" />
+        </div>
+        <p>
+            <strong>Image Url: </strong>@Model.Instance.ContentUri
+        </p>
+        <p>
+            <strong>Created Date: </strong>@string.Format(Global.Core.UIConst.DateTimeFormatString, Model.Instance.IssuedDate)
+        </p>
+        <p>
+            <strong>Title: </strong>@Html.TextBox("Title", Model.Instance.Title)
+        </p>
+    </div>
+}

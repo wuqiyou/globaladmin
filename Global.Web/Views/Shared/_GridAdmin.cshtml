@@ -1,0 +1,7 @@
+﻿@using Global.Web.Models
+@using Trirand.Web.Mvc
+@model GridAdminViewModel
+
+<div>
+    @Html.Trirand().JQGrid(Model.GridInstance, Model.GridUniqueId)
+</div>
