@@ -1,3 +1,5 @@
+﻿
+-- backup table data
 
 -- tblApplicationSetting
 
@@ -307,3 +309,25 @@ from dbo.tblReference
 where ReferenceId in (1,2,3)
  
 select @onerow
+
+
+-- tblSubitemValue without identity
+
+declare @onerow  nvarchar(MAX)
+set @onerow = 'insert into dbo.tblSubitemValue (ReferenceId,SubitemId,ValueText,ValueInt,ValueDate,ValueUrl,ValueHtml) values '
+ 
+select
+      @onerow = @onerow +    
+      + '(' 
+	  + convert(varchar, ReferenceId) + ','
+      + convert(varchar, SubitemId) + ','
+      + isnull('''' + convert(nvarchar(300), ValueText) + '''', 'NULL') + ','
+      + isnull(convert(varchar, ValueInt), 'NULL') + ','
+      + 'NULL,'
+      + isnull('''' + convert(nvarchar(200), ValueUrl) + '''', 'NULL') + ','
+      + isnull('''' + convert(nvarchar(max), ValueHtml) + '''', 'NULL') 
+	  + '),'
+from dbo.tblSubItemValue order by ReferenceId
+ 
+select @onerow
+

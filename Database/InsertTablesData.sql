@@ -263,9 +263,9 @@ SET IDENTITY_INSERT dbo.tblFolder OFF
 -- dbo.tblMainMenu
 
 insert into dbo.tblMainMenu (Name,MenuText,NavigateUrl,ParentId,Sort,IsPublished) values 
-('home',N'Home','home',NULL,1,1),
-('recipes',N'Recipes','recipe',NULL,3,1),
-('contact',N'Contact','contact-us',NULL,30,1)
+('home',N'Home','/home',NULL,1,1),
+('articles',N'Articles','/article',NULL,3,1),
+('contact',N'Contact','/contact-us',NULL,30,1)
 
 -- dbo.tblKeyword  (Not fully tested yet, Aug.25/2015)
 

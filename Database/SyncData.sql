@@ -4,7 +4,7 @@ insert into dbo.tblFolder
 	FolderId,
 	Name,
 	ParentId,
-	UrlAlias,
+	Slug,
 	FolderTypeId,
 	IsSubsiteRoot,
 	Sort,
@@ -14,7 +14,7 @@ select
 	FolderId,
 	Name,
 	ParentId,
-	UrlAlias,
+	Slug,
 	FolderTypeId,
 	IsSubsiteRoot,
 	Sort,
@@ -101,3 +101,26 @@ values
 
 SET IDENTITY_INSERT dbo.tblCategory OFF
 
+insert into dbo.tblSubitemValue
+(
+	ReferenceId,
+	SubitemId,
+	ValueText,
+	ValueInt,
+	ValueDate,
+	ValueUrl,
+	ValueHtml
+)
+select 
+	ReferenceId,
+	SubitemId,
+	ValueText,
+	ValueInt,
+	ValueDate,
+	ValueUrl,
+	ValueHtml
+from dbo.tblSubitemValue
+
+-- delete records and reset identity
+delete from dbo.tblSubitemValue;
+DBCC checkident ('dbo.tblSubitemValue', RESEED, 0);
