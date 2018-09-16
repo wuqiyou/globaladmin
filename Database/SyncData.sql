@@ -124,3 +124,11 @@ from dbo.tblSubitemValue
 -- delete records and reset identity
 delete from dbo.tblSubitemValue;
 DBCC checkident ('dbo.tblSubitemValue', RESEED, 0);
+
+
+
+insert into dbo.tblMainMenu 
+(Name,MenuText,NavigateUrl,ParentId,Sort,IsPublished)
+select Name,MenuText,NavigateUrl,ParentId,Sort,IsPublished
+from dbo.tblMainMenu 
+where ParentId = 5
