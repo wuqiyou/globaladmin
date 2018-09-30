@@ -132,3 +132,11 @@ insert into dbo.tblMainMenu
 select Name,MenuText,NavigateUrl,ParentId,Sort,IsPublished
 from dbo.tblMainMenu 
 where ParentId = 5
+
+
+-- insert data for multi-language tables
+insert into dbo.tblReferenceLanguage
+(ReferenceId, Title, Description,LanguageId)
+select ReferenceId, Title, Description, 2
+from dbo.tblReference
+where ReferenceId > 3
