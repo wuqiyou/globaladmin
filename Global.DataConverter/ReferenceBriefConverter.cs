@@ -2,11 +2,23 @@
 using Framework.Core;
 using Global.Data;
 using SubjectEngine.Data;
+using System.Linq;
 
 namespace Global.DataConverter
 {
     public sealed class ReferenceBriefConverter : IDataConverter<ReferenceBriefData, ReferenceBriefDto>
     {
+        public object LanguageId { get; set; }
+
+        public ReferenceBriefConverter()
+        {
+        }
+
+        public ReferenceBriefConverter(object languageId)
+        {
+            LanguageId = languageId;
+        }
+
         public IEnumerable<ReferenceBriefDto> Convert(IEnumerable<ReferenceBriefData> entitys)
         {
             List<ReferenceBriefDto> dtoList = new List<ReferenceBriefDto>();
@@ -30,6 +42,17 @@ namespace Global.DataConverter
             dto.Template = entity.Template;
             dto.LocationName = entity.LocationName;
             dto.TotalCount = entity.TotalCount;
+
+            // Multi-language
+            if (LanguageId != null)
+            {
+                ReferenceBriefLanguageData item = entity.ReferenceLanguages.FirstOrDefault(o => object.Equals(o.LanguageId, LanguageId));
+                if (item != null)
+                {
+                    dto.Title = item.Title;
+                }
+            }
+            
             return dto;
         }
     }

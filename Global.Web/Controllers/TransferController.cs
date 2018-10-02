@@ -28,7 +28,7 @@ namespace Global.Web.Controllers
         public ActionResult Index()
         {
             IFolderService folderService = ServiceLocator.Current.GetInstance<IFolderService>();
-            IEnumerable<ReferenceBriefDto> items = folderService.GetReferences(CmsRegister.RecipeFolderId, 1, 6000);
+            IEnumerable<ReferenceBriefDto> items = folderService.GetReferences(CmsRegister.RecipeFolderId, 1, 6000, null);
 
             List<ReferenceInfoDto> instances = new List<ReferenceInfoDto>();
 

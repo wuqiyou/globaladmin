@@ -24,12 +24,12 @@ namespace Global.Service
             }
         }
 
-        public IEnumerable<ReferenceBriefDto> GetReferences(int folderId, int pageIndex, int pageSize)
+        public IEnumerable<ReferenceBriefDto> GetReferences(int folderId, int pageIndex, int pageSize, object languageId)
         {
             using (IUnitOfWork uow = UnitOfWorkFactory.Instance.Start(DataStoreResolver.CMSDataStoreKey))
             {
                 ReferenceInfoFacade facade = new ReferenceInfoFacade(uow);
-                List<ReferenceBriefDto> dtoList = facade.GetList(folderId, pageIndex, pageSize, new ReferenceBriefConverter());
+                List<ReferenceBriefDto> dtoList = facade.GetList(folderId, pageIndex, pageSize, new ReferenceBriefConverter(languageId));
                 return dtoList;
             }
         }

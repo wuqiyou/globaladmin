@@ -58,7 +58,14 @@ namespace Global.Web.Controllers
             int pageIndex = page.HasValue ? page.Value : 1;
 
             FolderInfoViewModel model = new FolderInfoViewModel();
-            model.References = Service.GetReferences(id, pageIndex, SiteConfig.PageSize);
+            if (CurrentLanguage.Id == WebContext.Current.DefaultLanguage.Id)
+            {
+                model.References = Service.GetReferences(id, pageIndex, SiteConfig.PageSize, null);
+            }
+            else
+            {
+                model.References = Service.GetReferences(id, pageIndex, SiteConfig.PageSize, CurrentLanguage.Id);
+            }
             int totalCount = 0;
             ReferenceBriefDto first = model.References.FirstOrDefault();
             if (first != null)
