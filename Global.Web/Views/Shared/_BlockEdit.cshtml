@@ -11,7 +11,9 @@
         foreach (var subitem in Model.Block.Subitems)
         {
         <div class="rectangle subitem">
-            <p><strong>@string.Format("{0}. {1}", ++index, @subitem.Label)</strong></p>
+            <p>
+                <strong>@string.Format("{0}. {1}", ++index, @subitem.Label)</strong>
+            </p>
             @if (subitem.DucType != DucTypes.Grid)
             {
                 DucValueDto value = null;
