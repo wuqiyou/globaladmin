@@ -1,6 +1,6 @@
 
 /*
-Construct reference full slug by template.slug + category.slug + reference.slug 
+Construct reference full slug by folder.fullslug + reference.slug 
 */
 /****** Object:  View [dbo].[vwReferenceInfo]    Script Date: 10/06/2018 12:08:43 ******/
 SET ANSI_NULLS ON
@@ -17,13 +17,9 @@ SELECT
 		dbo.tblReference.Name, 
         dbo.tblReference.Slug, 
 		CASE 
-			WHEN FolderListing.SubsiteFolderId IS NULL 
-				THEN COALESCE(dbo.tblTemplate.Slug + '/' + dbo.tblCategory.Slug + '/' + dbo.tblReference.Slug + '/' + CONVERT(nvarchar(50), 
-								dbo.tblReference.ReferenceId), 
-								dbo.tblReference.Slug
-							) 
+			WHEN FolderListing.FullSlug IS NULL THEN dbo.tblReference.Slug 
 			WHEN dbo.tblReference.Slug IS NULL OR dbo.tblReference.Slug = '' THEN FolderListing.FullSlug 
-			ELSE FolderListing.FullSlug + '/' + dbo.tblReference.Slug + '/' + CONVERT(nvarchar(50), dbo.tblReference.ReferenceId) 
+			ELSE FolderListing.FullSlug + '/' + dbo.tblReference.Slug 
 		END AS UrlAlias, 
 		FolderListing.FullName AS Folder, 
 		FolderListing.FolderId, 
