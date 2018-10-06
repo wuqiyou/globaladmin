@@ -9,7 +9,6 @@
   switch (Model.DucType)
   {
     case DucTypes.SubTitle:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "1", cols = "80" })
@@ -21,7 +20,6 @@
       break;
     case DucTypes.Text:
     case DucTypes.Datetime:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "2", cols = "80" })
@@ -32,7 +30,6 @@
       }
       break;
     case DucTypes.TextArea:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueText, new { rows = "10", cols = "80" })
@@ -44,7 +41,6 @@
       break;
     case DucTypes.Html:
     case DucTypes.HtmlArea:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   @Html.TextArea(Html.GetClientId(Model.DucId), value.ValueHtml, new { rows = "10", cols = "80" })

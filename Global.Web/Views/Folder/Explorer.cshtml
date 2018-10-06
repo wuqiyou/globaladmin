@@ -15,8 +15,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name
-      </th>
       <th>Title
       </th>
       <th>Slug
@@ -26,8 +24,6 @@
       <th>Last Modified
       </th>
       <th>Template
-      </th>
-      <th>CreatedById
       </th>
       <th>Published
       </th>
@@ -43,10 +39,7 @@
           @instance.ReferenceId
         </td>
         <td>
-          @Html.ActionLink(@instance.Name, ReferenceController.DetailAction, ReferenceController.ControllerName, new { id = instance.ReferenceId }, new { })
-        </td>
-        <td>
-          @instance.Title
+          @Html.ActionLink(@instance.Title, ReferenceController.DetailAction, ReferenceController.ControllerName, new { id = instance.ReferenceId }, new { })
         </td>
         <td>
           @instance.Slug
@@ -59,9 +52,6 @@
         </td>
         <td>
           @instance.Template
-        </td>
-        <td>
-          @instance.CreatedById
         </td>
         <td>
           @Html.CheckBox("IsPublished", @instance.IsPublished, new { @disabled = "disabled" })

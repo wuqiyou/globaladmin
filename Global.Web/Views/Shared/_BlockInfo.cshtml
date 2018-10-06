@@ -12,7 +12,13 @@
         foreach (var item in Model.Block.Subitems)
         {
         <div class="rectangle item">
-            <p><strong>@string.Format("{0}. {1}", ++index, @item.Label)</strong></p>
+            <p>
+                <strong>@string.Format("{0}. {1}", ++index, @item.Label)</strong>
+                @if (item.DucType == DucTypes.Text || item.DucType == DucTypes.TextArea || item.DucType == DucTypes.Html || item.DucType == DucTypes.HtmlArea)
+                {
+                    Html.RenderPartial("_LanguageLabel", Model.CurrentLanguage);
+                }
+            </p>
             @if (item.DucType != DucTypes.Grid)
             {
                 DucValueDto value = null;

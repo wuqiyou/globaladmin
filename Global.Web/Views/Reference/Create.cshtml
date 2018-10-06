@@ -10,19 +10,15 @@
     @Html.ValidationSummary();    
     <div style="border-bottom: 1px solid #d6d6d6; padding: 0 2%; margin-top: 2%">
         <p>
-            <strong>Name: </strong>
-            @Html.TextBox("Name", Model.Instance.Name)
-        </p>
-        <p>
-            <strong>Slug: </strong>
-            @Html.TextBox("Slug", Model.Instance.Slug)
-        </p>
-        <p>
             <strong>Title: </strong>
             @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
         </p>
         <p>
             @Html.TextBox("Title", Model.Instance.Title)
+        </p>
+        <p>
+            <strong>Slug: </strong>
+            @Html.TextBox("Slug", Model.Instance.Slug)
         </p>
         <p>
             <strong>Description: </strong>
