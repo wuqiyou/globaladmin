@@ -13,6 +13,10 @@
         <div class="rectangle subitem">
             <p>
                 <strong>@string.Format("{0}. {1}", ++index, @subitem.Label)</strong>
+                @if (subitem.DucType == DucTypes.Text || subitem.DucType == DucTypes.TextArea || subitem.DucType == DucTypes.Html || subitem.DucType == DucTypes.HtmlArea)
+                {
+                    Html.RenderPartial("_LanguageLabel", Model.CurrentLanguage);
+                }
             </p>
             @if (subitem.DucType != DucTypes.Grid)
             {

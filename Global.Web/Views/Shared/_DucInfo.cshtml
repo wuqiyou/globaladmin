@@ -7,7 +7,6 @@
   switch (Model.DucType)
   {
     case DucTypes.SubTitle:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   <div>@value.ValueText</div>
@@ -16,7 +15,6 @@
     case DucTypes.Text:
     case DucTypes.TextArea:
     case DucTypes.Datetime:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   <div>@Html.Raw(value.ValueText)</div>
@@ -24,7 +22,6 @@
       break;
     case DucTypes.Html:
     case DucTypes.HtmlArea:
-  @Html.Partial("_LanguageLabel", Model.CurrentLanguage)
       if (value != null)
       {
   <div>@Html.Raw(value.ValueHtml)</div>
