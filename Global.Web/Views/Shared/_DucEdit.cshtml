@@ -115,13 +115,13 @@
     case DucTypes.ReferenceList:
       if (value != null)
       {
-  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueInt)</p>
-  <p>ReferenceList-CategoryId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueText)</p>
+  <p>ReferenceList-FolderId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueInt)</p>
+  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)), @value.ValueText)</p>
       }
       else
       {
-  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)))</p>
-  <p>ReferenceList-CategoryId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+  <p>ReferenceList-FolderId: @Html.TextBox(string.Format(UIConst.ValueIntKeyFormatString, Html.GetClientId(Model.DucId)))</p>
+  <p>ReferenceList-TemplateId: @Html.TextBox(string.Format(UIConst.ValueTextKeyFormatString, Html.GetClientId(Model.DucId)))</p>
       }
       break;
     case DucTypes.ReferenceCollection:
