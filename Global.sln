@@ -21,9 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global.Web.Common", "Global
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2FB79DD7-D021-4D32-B6DB-7D837692433D}"
 	ProjectSection(SolutionItems) = preProject
-		Database\CreateStoredProcedures.sql = Database\CreateStoredProcedures.sql
-		Database\CreateTables.sql = Database\CreateTables.sql
-		Database\CreateViews.sql = Database\CreateViews.sql
 		Database\CreatevwFolderInfo.sql = Database\CreatevwFolderInfo.sql
 		Database\CreatevwReferenceInfo.sql = Database\CreatevwReferenceInfo.sql
 		Database\CreatevwReferenceInfoByFolder.sql = Database\CreatevwReferenceInfoByFolder.sql
